@@ -1,0 +1,54 @@
+<section class="principalBanner">
+  <div class="contentLogin">
+    <div class="center">			
+      <form [formGroup]="loginForm" novalidate autocomplete="off" class="formLogin animated bounceInDown fast">
+          <div class="loginContent">
+              <h1 class="titleForm">Login</h1>
+              <hr class="line">
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Usuario</label>
+                  <input type="text" formControlName="Email" name="uname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa tu email">
+                  <div class="error" *ngIf="loginForm.get('Email').hasError('required') && loginForm.get('Email').touched">Correo electrónico requerido</div>
+                  <div class="error" *ngIf="loginForm.get('Email').hasError('email') && loginForm.get('Email').touched">Ingrese un correo electrónico valido</div>  
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputPassword1">Contraseña</label>
+                  <input type="password"  class="form-control" id="exampleInputPassword1" placeholder="Ingresa tu contraseña" name="Password" formControlName="Password">                
+                  <div class="error" *ngIf="loginForm.get('Password').hasError('required') && loginForm.get('Password').touched">No se ha ingresado una contraseña</div>
+                </div>
+              <div class="form-check">
+                  <a href="register.html">Registrate!</a>
+              </div>
+              <hr>  
+              <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid" class="btn btn-primary"(click)="loginValidate()">Ingresar</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- <div class="container" style="background-image: url(src/assets/images/LoginBackGround.jpg)"> -->
+<!--   <div class="container">
+      <div class="row justify-content-center align-items-center minh-100">
+        <div class="col-md-5">
+            <h4 align="center">Ingresar</h4>  
+              <form [formGroup]="loginForm" novalidate autocomplete="off">
+                  <div class="container">
+  
+                    <label for="Email" ><b>Direccion de correo</b></label>
+                    <input type="text" formControlName="Email" name="uname" >
+                    <div class="error" *ngIf="loginForm.get('Email').hasError('required') && loginForm.get('Email').touched">Correo electrónico requerido</div>
+                    <div class="error" *ngIf="loginForm.get('Email').hasError('email') && loginForm.get('Email').touched">Ingrese un correo electrónico valido</div> 
+  
+                    <label for="Password"><b>Contraseña</b></label>
+                    <input type="password"  name="Password" formControlName="Password">                
+                    <div class="error" *ngIf="loginForm.get('Password').hasError('required') && loginForm.get('Password').touched">No se ha ingresado una contraseña</div>
+                    <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid"class="btn btn-success"(click)="loginValidate()">Ingresar</button>
+                    
+                  </div>         
+              </form>
+              <br>
+        </div>
+      </div>
+  </div> -->
+  
