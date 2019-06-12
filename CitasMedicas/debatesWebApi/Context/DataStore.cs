@@ -10,7 +10,9 @@ namespace debatesWebApi.Context
 {
     public class DataStore:DbContext
     {
-        public DataStore() : base("DataStore") { }
+        public DataStore() : base("DataStore") {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataStore, Migrations.Configuration>());
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -19,9 +21,8 @@ namespace debatesWebApi.Context
            .Configure(c => c.HasColumnType("datetime2"));
         }
         public DbSet<User> Users { get; set; }
-        public DbSet<Debates> Debates { get; set;}
-        public DbSet<Comments> Comments { get; set;}
-        public DbSet<MenuRoles> Menu { get; set;}
-        public DbSet<Rating> Ratings { get; set;}
+        public DbSet<MenuRoles> MenuRoles { get; set;}
+        public DbSet<Cita> cita { get; set;}
+        public DbSet<DoctorCargos> DoctorCargos { get; set; }
     }
 }

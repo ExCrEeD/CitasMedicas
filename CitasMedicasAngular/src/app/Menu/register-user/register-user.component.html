@@ -24,8 +24,8 @@
                   
                   <label for="Rol"><b>Rol</b></label>
                   <select name="Rol" formControlName="Rol" class="form-control">
-                    <option value="Student">Estudiante</option>
-                    <option value="Prelector">Conferencista</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Paciente">Paciente</option>
                   </select>             
                   <div class="error" *ngIf="myForm.get('Rol').hasError('required') && myForm.get('Rol').touched">No se ha ingresado un rol</div>
 

@@ -11,11 +11,13 @@ namespace debatesWebApi.Models
         [Key]
         public int Id { get; set; }
         public String Rol { get; set; }
-        public  bool CreateDebate { get; set; }
+        public  bool AgendarCitas { get; set; }
         public bool Report { get; set; }
-        public bool Scroll { get; set; }
+        public bool ConsultarCita { get; set; }
         public bool UserInfo { get; set; }
         public bool RegisterUser { get; set; }
+
+        public bool CrearCargo { get; set; }
 
         public MenuRoles(string rol)
         {
@@ -24,17 +26,18 @@ namespace debatesWebApi.Models
             {
                 this.RegisterUser = true;
                 this.UserInfo = true;
+                this.Report = true;
+                this.CrearCargo = true;
             }
-            if (rol == "Student")
+            if (rol == "Doctor")
             {
-                this.Scroll = true;
+                this.ConsultarCita = true;
                 this.UserInfo = true;
             }
-            if (rol == "Prelector")
+            if (rol == "Paciente")
             {
-                this.CreateDebate = true;
-                this.Report = true;
-                this.Scroll = true;
+                this.AgendarCitas = true;
+                this.AgendarCitas = true;
                 this.UserInfo = true;
             }
         }

@@ -13,10 +13,7 @@ import { StorageServiceModule } from 'angular-webstorage-service';
 import { HomeComponent } from './Menu/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterUserComponent } from './Menu/register-user/register-user.component';
-import { DebatesComponent } from './Menu/debates/debates.component';
 import { ReportsComponent } from './Menu/reports/reports.component';
-import { ScrollDebatesComponent } from './Menu/Scroll/scroll-debates/scroll-debates.component';
-import { DebatesInScrollComponent } from './Menu/Scroll/debates-in-scroll/debates-in-scroll.component';
 /* Modelos */
 import {User} from './Model/user';
 import {Response} from './Model/response';
@@ -25,11 +22,11 @@ import {Menu} from './Model/menu';
 import {Rating} from './Model/rating';
 /* Servicios */
 import { UserService } from './Services/user.service';
-import { DebateService } from './Services/debate.service';
-import { CommentService } from './Services/comment.service';
-import { CommentsComponent } from './Menu/Scroll/comments/comments.component';
 import { DeleteAccountComponent } from './Menu/User/delete-account/delete-account.component';
 import { LocalStorageService } from './Services/local-storage.service';
+import { DoctorCargosComponent } from './menu/doctor-cargos/doctor-cargos.component';
+import { DoctorCargosService } from './services/doctor-cargos.service';
+
 
 @NgModule({
   declarations: [
@@ -37,12 +34,9 @@ import { LocalStorageService } from './Services/local-storage.service';
     HomeComponent,
     LoginComponent,
     RegisterUserComponent,
-    DebatesComponent,
     ReportsComponent,
-    ScrollDebatesComponent,
-    DebatesInScrollComponent,
-    CommentsComponent,
     DeleteAccountComponent,
+    DoctorCargosComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,9 +45,10 @@ import { LocalStorageService } from './Services/local-storage.service';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
-    StorageServiceModule 
+    StorageServiceModule,
+     
   ],
-  providers: [UserService,DebateService,CommentService,User,Response,Comment,Menu,Rating],
+  providers: [UserService,User,Response,Comment,Menu,Rating, DoctorCargosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

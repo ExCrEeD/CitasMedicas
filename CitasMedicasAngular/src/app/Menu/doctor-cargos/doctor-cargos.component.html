@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center minh-100">
+    <div class="col-md-5">
+          <h4 align="center">Crear un nuevo Cargo</h4>  
+          <form  [formGroup]="myForm" novalidate autocomplete="off">
+               <div class="container">
+
+                <label for="Name"><b>Nombre Cargo</b></label>
+                <input type="text"  name="Name" formControlName="Descripcion" >
+                <div class="error" *ngIf="myForm.get('Descripcion').hasError('required') && myForm.get('Descripcion').touched">Nombre Cargo requerido</div>
+
+                <label for="SecondName"><b>Valor Hora</b></label>
+                <input type="number"  name="SecondName" formControlName="ValorHora">
+                <div class="error" *ngIf="myForm.get('ValorHora').hasError('required') && myForm.get('ValorHora').touched">Valor hora requerida</div>
+                <button type="submit"  [disabled]="myForm.invalid"class="btn btn-success"(click)="addCargo($event)">Crear Cargo</button>
+              
+                <label for="Rol"><b>Doctor</b></label>
+                <select name="Doctor"  class="form-control">
+                  <option *ngFor="let doctor of  alldoctores$ | async">{{doctor.Name}}</option>
+                </select>   
+              
+              </div>       
+          </form>
+          <br>
+    </div>
+  </div>
+</div>

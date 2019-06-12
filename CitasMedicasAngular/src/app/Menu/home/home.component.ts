@@ -10,16 +10,16 @@ import { Menu } from 'src/app/Model/menu';
 })
 export class HomeComponent implements OnInit {
 
-  public showDebatesComponent = false;
   public showReportComponent = false;
-  public showScrollDebatesComponent = false;
   public showUserOption = false;
   public showDeleteAccount = false;
   public showRegisterUser = false;
+  public showCrearCargo = false;
   public user = "";
   constructor(private userService:UserService,private router: Router,private menu:Menu) {
      this.user = userService.getUserName(); 
      this.menu = userService.getMenu();
+     console.log(this.menu);
    }
 
   ngOnInit() { 
@@ -28,21 +28,20 @@ export class HomeComponent implements OnInit {
   
   public navigateComponent(componente)
   {
-    this.showDebatesComponent = false;
     this.showReportComponent = false;
-    this.showScrollDebatesComponent = false;
     this.showUserOption = false;
     this.showDeleteAccount = false;
     this.showRegisterUser = false;
+    this.showCrearCargo = false;
 
     switch(componente)
     {
-        case 'Debates':{this.showDebatesComponent = true;break;}
         case 'Report':{this.showReportComponent = true;break;}
-        case 'ScrollDebate':{this.showScrollDebatesComponent = true;break;}
         case 'User':{this.showUserOption=true;break;}
         case 'DeleteAccount':{this.showDeleteAccount=true;break;}
         case 'RegisterUser':{this.showRegisterUser=true;}break;
+        case 'Cargo':{this.showCrearCargo =true}break;
+
     }
   };
 

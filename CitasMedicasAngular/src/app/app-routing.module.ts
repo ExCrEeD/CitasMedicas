@@ -3,12 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './Menu/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterUserComponent } from './Menu/register-user/register-user.component';
-import { DebatesComponent } from './Menu/debates/debates.component';
 import { ReportsComponent } from './Menu/reports/reports.component';
-import { ScrollDebatesComponent } from './Menu/Scroll/scroll-debates/scroll-debates.component';
 
 
 import { AuthLoginService } from './services/auth-login.service';
+import { DoctorCargosComponent } from './menu/doctor-cargos/doctor-cargos.component';
 
 const routes: Routes = [
  {path:'',component:LoginComponent},
@@ -16,9 +15,8 @@ const routes: Routes = [
  /* {path:'Home',component:HomeComponent,canActivate:[AuthLoginService]}, */
  {path:'Home',component:HomeComponent,canActivate:[AuthLoginService]},
  {path:'Register',component:RegisterUserComponent },
- {path:'Debates',component:DebatesComponent,canActivate:[AuthLoginService] },
  {path:'Report',component:ReportsComponent ,canActivate:[AuthLoginService]},
- {path:'ScrollDebate',component:ScrollDebatesComponent ,canActivate:[AuthLoginService]},
+ {path: 'Cargo', component : DoctorCargosComponent, canActivate:[AuthLoginService]}
 ];
 
 @NgModule({

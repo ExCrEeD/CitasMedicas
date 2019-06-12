@@ -10,7 +10,7 @@ import { Menu } from '../Model/menu';
 
 export class UserService {
   private headers: HttpHeaders;
-  private accessPointUrl: string = 'http://localhost:61568/api/user';
+  private accessPointUrl: string = this.newMethod();
   /* static instance:UserRegisterService; */
   private loginState = false;
 
@@ -19,6 +19,10 @@ export class UserService {
   { 
    /*  UserRegisterService.instance = this; */
     this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
+  }
+
+  private newMethod(): string {
+    return 'http://localhost:61568/api/user';
   }
 
   public add(user) {

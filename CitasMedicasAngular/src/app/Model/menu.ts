@@ -2,9 +2,10 @@ export class Menu
 {
     Id:number;
     Rol:string;
-    CreateDebate:boolean;
+    AgendarCitas:boolean;
     Report:boolean;
-    Scroll:boolean;
+    ConsultarCita:boolean;
     UserInfo:boolean;
-    RegisterUser:boolean;   
+    RegisterUser:boolean;  
+    CrearCargo : boolean; 
 }

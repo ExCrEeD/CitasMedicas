@@ -42,7 +42,7 @@ namespace debatesWebApi.Controllers
 
         public MenuRoles getRolMenu(string rol)
         {
-            var query = from a in db.Menu
+            var query = from a in db.MenuRoles
                         where a.Rol.ToUpper() == rol.ToUpper()
                         select a;
             return query.First();
@@ -56,7 +56,6 @@ namespace debatesWebApi.Controllers
             {
                 User user = new User();
                 user.Name = "Admin";
-                user.SecondName = "Usuarios";
                 user.Email = "admin@debate";
                 user.Password = "Admin123*";
                 user.Rol = "Admin";
@@ -64,16 +63,16 @@ namespace debatesWebApi.Controllers
                 db.SaveChanges();
             }
 
-            var query2 = from a in db.Menu
+            var query2 = from a in db.MenuRoles
                          select a;
             if (query2.Count() == 0)
             {
                 MenuRoles userAdmin = new MenuRoles("Admin");
-                db.Menu.Add(userAdmin);
-                MenuRoles userStudent = new MenuRoles("Student");
-                db.Menu.Add(userStudent);
-                MenuRoles userPrelector = new MenuRoles("Prelector");
-                db.Menu.Add(userPrelector);
+                db.MenuRoles.Add(userAdmin);
+                MenuRoles userDoctor = new MenuRoles("Doctor");
+                db.MenuRoles.Add(userDoctor);
+                MenuRoles userPaciente = new MenuRoles("Paciente");
+                db.MenuRoles.Add(userPaciente);
                 db.SaveChanges();
             }
         }
@@ -91,48 +90,10 @@ namespace debatesWebApi.Controllers
         {
         }
 
-        // DELETE api/user
-        public Response Delete(int id,string password)
-        {
-            Response answer = new Response();
-            try
-            {
-                var pass = (from a in db.Users
-                           where a.Id == id
-                           select a.Password).First();
-                if (pass == password)
-                {
-                    User usuario =  db.Users.Find(id);
-                    db.Users.Remove(usuario);                 
-                    var debates = (from a in db.Debates
-                                  where a.Autor == id
-                                  select a).ToList();
-                    foreach (var debate in debates)
-                    {
-                        db.Debates.Remove(debate);
-                    }
-                    var comments = (from a in db.Comments
-                                   where a.AutorId == id
-                                   select a).ToList();
-                    foreach (var comment in comments)
-                    {
-                        db.Comments.Remove(comment);
-                    }
-                    db.SaveChanges();
-                    answer.State = 0;
-                    answer.Message = "usuario borrado correctamente";
-                }
-                else
-                {
-                    answer.Message = "Contraseña incorrecta";
-                }
-            }
-            catch (Exception ex)
-            {
-                answer.Message = ex.Message;
-                return answer;
-            }
-            return answer;
-        }
+        //// DELETE api/user
+        //public Response Delete(int id,string password)
+        //{
+          
+        //}
     }
 }

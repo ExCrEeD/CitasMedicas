@@ -192,28 +192,16 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Context\DataStore.cs" />
-    <Compile Include="Controllers\CommentController.cs" />
-    <Compile Include="Controllers\DebatesController.cs" />
+    <Compile Include="Controllers\DoctorCargoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\userController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903061401239_intialMigration.cs" />
-    <Compile Include="Migrations\201903061401239_intialMigration.Designer.cs">
-      <DependentUpon>201903061401239_intialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905290259394_MigracionBaseDeDatos.cs" />
-    <Compile Include="Migrations\201905290259394_MigracionBaseDeDatos.Designer.cs">
-      <DependentUpon>201905290259394_MigracionBaseDeDatos.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Comments.cs" />
-    <Compile Include="Models\Debates.cs" />
+    <Compile Include="Models\Cita.cs" />
+    <Compile Include="Models\DoctorCargos.cs" />
     <Compile Include="Models\MenuRoles.cs" />
-    <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -343,14 +331,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903061401239_intialMigration.resx">
-      <DependentUpon>201903061401239_intialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905290259394_MigracionBaseDeDatos.resx">
-      <DependentUpon>201905290259394_MigracionBaseDeDatos.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

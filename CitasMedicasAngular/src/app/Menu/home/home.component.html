@@ -9,22 +9,15 @@
           <p class="text-center mb-0 text-12 text-f5"></p>
         </div>
       </div>
-      <div *ngIf="menu.Scroll">
+      <div *ngIf="menu.CrearCargo">
         <div class="text-center">
-          <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center" (click)="navigateComponent('ScrollDebate');">
-            <span class="text-center mr-3"><i class="far fa-list-alt fa-2x"></i></span>
-            <span class="text-center mb-0">Ver debates</span>
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center" (click)="navigateComponent('Cargo');">
+            <span class="text-center mr-3"><i class="far fa-file-alt fa-2x"></i></span>
+            <span class="text-center mb-0">Crear Cargo</span>
           </button>
         </div>
       </div>
-      <div *ngIf="menu.CreateDebate">
-        <div class="text-center">
-          <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center" (click)="navigateComponent('Debates');">
-            <span class="text-center mr-3"><i class="far fa-plus-square fa-2x"></i></span>
-            <span class="text-center mb-0">Crear debate</span>
-          </button>
-        </div>
-      </div>
+     
       <div *ngIf="menu.Report">
         <div class="text-center">
           <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center" (click)="navigateComponent('Report');">
@@ -70,22 +63,14 @@
           <p class="text-center mb-0 text-12 text-f5">{{ user }}</p>
         </div>
       </div>
-      <div *ngIf="menu.Scroll">
-        <div class="text-center">
-          <button class="uk-button px-4 py-3 btn-block btn-d-menu" (click)="navigateComponent('ScrollDebate');">
-            <p class="text-center"><i class="far fa-list-alt fa-2x"></i></p>
-            <p class="text-center mb-0">Ver debates</p>
-          </button>
+      <div *ngIf="menu.CrearCargo">
+          <div class="text-center">
+            <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center" (click)="navigateComponent('Cargo');">
+              <span class="text-center mr-3"><i class="far fa-file-alt fa-2x"></i></span>
+              <span class="text-center mb-0">Crear Cargo</span>
+            </button>
+          </div>
         </div>
-      </div>
-      <div *ngIf="menu.CreateDebate">
-        <div class="text-center">
-          <button class="uk-button px-4 py-3 btn-block btn-d-menu" (click)="navigateComponent('Debates');">
-            <p class="text-center"><i class="far fa-plus-square fa-2x"></i></p>
-            <p class="text-center mb-0">Crear debate</p>
-          </button>
-        </div>
-      </div>
       <div *ngIf="menu.Report">
         <div class="text-center">
           <button class="uk-button px-4 py-3 btn-block btn-d-menu" (click)="navigateComponent('Report');">
@@ -132,9 +117,8 @@
         </div>
       </header>
       <div>
-        <app-debates *ngIf=showDebatesComponent></app-debates>
+        <app-doctor-cargos *ngIf=showCrearCargo></app-doctor-cargos>
         <app-reports *ngIf=showReportComponent></app-reports>
-        <app-scroll-debates *ngIf=showScrollDebatesComponent></app-scroll-debates>
         <app-delete-account *ngIf=showDeleteAccount></app-delete-account>
         <app-register-user *ngIf=showRegisterUser></app-register-user>
       </div>

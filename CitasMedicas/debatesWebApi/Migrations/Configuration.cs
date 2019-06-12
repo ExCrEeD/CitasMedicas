@@ -9,7 +9,7 @@ namespace debatesWebApi.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(debatesWebApi.Context.DataStore context)
