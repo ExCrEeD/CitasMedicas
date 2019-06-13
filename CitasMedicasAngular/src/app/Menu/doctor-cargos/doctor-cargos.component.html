@@ -8,20 +8,91 @@
                 <label for="Name"><b>Nombre Cargo</b></label>
                 <input type="text"  name="Name" formControlName="Descripcion" >
                 <div class="error" *ngIf="myForm.get('Descripcion').hasError('required') && myForm.get('Descripcion').touched">Nombre Cargo requerido</div>
-
+               
+                <br>
                 <label for="SecondName"><b>Valor Hora</b></label>
                 <input type="number"  name="SecondName" formControlName="ValorHora">
                 <div class="error" *ngIf="myForm.get('ValorHora').hasError('required') && myForm.get('ValorHora').touched">Valor hora requerida</div>
-                <button type="submit"  [disabled]="myForm.invalid"class="btn btn-success"(click)="addCargo($event)">Crear Cargo</button>
-              
-                <label for="Rol"><b>Doctor</b></label>
-                <select name="Doctor"  class="form-control">
-                  <option *ngFor="let doctor of  alldoctores$ | async">{{doctor.Name}}</option>
-                </select>   
+                
+                
+                <br>
+                <button type="submit"  [disabled]="myForm.invalid"class="btn btn-success"(click)="addCargo(doctor)">Crear Cargo</button>
               
               </div>       
           </form>
           <br>
     </div>
   </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Código</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Valor Hora</th>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cargo of arrayDoctorCargo$  | async; index as i">
+        <td scope="row">{{i+1}}</td>
+        <td>{{cargo.IdCargo}}</td>
+        <td>{{cargo.Descripcion}}</td>
+        <td>{{cargo.ValorHora}}</td>
+        <td>
+          <!--Modal para actualizar tarea -->
+          <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalActualizar">Actualizar Cargo </h5>
+                  <button type="button" class="close" (click)="d('Cross click')" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="formUpdate" novalidate autocomplete="off">
+                    <form>
+
+                      <div class="form-group">
+                      <label for="Name"><b>Nombre Cargo</b></label>
+                      <input type="text" class="form-control"   name="Name" formControlName="Descripcion" >
+                      <div class="error" *ngIf="myForm.get('Descripcion').hasError('required') && myForm.get('Descripcion').touched">Nombre Cargo requerido</div>
+                     </div>
+
+                      <br>
+                      <div class="form-group">
+                      <label for="SecondName"><b>Valor Hora</b></label>
+                      <input type="number" class="form-control"  name="SecondName" formControlName="ValorHora">
+                      <div class="error" *ngIf="myForm.get('ValorHora').hasError('required') && myForm.get('ValorHora').touched">Valor hora requerida</div>
+                      </div>
+                      
+                      <br>
+                      <button type="submit"  [disabled]="myForm.invalid"class="btn btn-success"(click)="addCargo(doctor)">Crear Cargo</button>
+                    
+                    </form>  
+                  </form>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="DeleteCargo(cargo.IdCargo)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+
 </div>

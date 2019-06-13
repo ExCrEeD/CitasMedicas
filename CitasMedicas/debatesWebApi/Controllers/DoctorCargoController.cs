@@ -21,12 +21,21 @@ namespace debatesWebApi.Controllers
             db.SaveChanges();
         }
 
-        public IEnumerable<User> getDoctores()
+       
+        public IEnumerable<DoctorCargos> getCargos()
         {
-            var query = from doctor in db.Users
-                        where doctor.Rol.ToUpper() == "DOCTOR"
-                        select doctor;
+            var query = from DoctorCargos in db.DoctorCargos
+                        select DoctorCargos;
             return query.ToList();
+
         }
+
+        public void deleteCargo(int id )
+        {
+            var query = db.DoctorCargos.Find(id);
+            db.DoctorCargos.Remove(query);
+            db.SaveChanges();
+        }
+    
     }
 }

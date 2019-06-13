@@ -10,7 +10,6 @@ namespace debatesWebApi.Models
     {
         [Key]
         public int IdCargo { get; set; }
-        public int IdDoctor { get; set; }
         public string Descripcion { get; set; }
         public decimal ValorHora { get; set; }
     }

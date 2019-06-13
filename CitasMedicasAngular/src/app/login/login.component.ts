@@ -39,4 +39,9 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/Home']);
     }
   }
+
+  public registrarUsuario()
+  {
+     this.router.navigate(['/Register']);
+  }
 }

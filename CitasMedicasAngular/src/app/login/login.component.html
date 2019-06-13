@@ -16,9 +16,8 @@
                   <input type="password"  class="form-control" id="exampleInputPassword1" placeholder="Ingresa tu contraseña" name="Password" formControlName="Password">                
                   <div class="error" *ngIf="loginForm.get('Password').hasError('required') && loginForm.get('Password').touched">No se ha ingresado una contraseña</div>
                 </div>
-              <div class="form-check">
-                  <a href="register.html">Registrate!</a>
-              </div>
+                <hr>
+                <button type="submit" class="btn btn-primary" (click)="registrarUsuario()">Registrate!</button>
               <hr>  
               <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid" class="btn btn-primary"(click)="loginValidate()">Ingresar</button>
           </div>

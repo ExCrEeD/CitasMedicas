@@ -3,6 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { User } from '../Model/user';
 import { Menu } from '../Model/menu';
 import { SESSION_STORAGE, WebStorageService } from 'angular-webstorage-service';
+import { DoctorCargo } from '../Model/doctor-cargo';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,13 @@ export class DoctorCargosService {
 
   public getDoctores(){
     return this.http.get<User>(this.accessPointUrl+"/getDoctores",{headers: this.headers});    
+  }
+
+  public getAllCargos(){
+    return this.http.get<DoctorCargo>(this.accessPointUrl+"/getCargos",{headers: this.headers}); 
+  }
+
+  public DeleteCargo(id){
+    return this.http.delete(this.accessPointUrl+"/deleteCargo"+"?id="+id,{headers: this.headers});
   }
 } 
