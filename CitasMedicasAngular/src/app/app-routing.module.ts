@@ -8,6 +8,7 @@ import { ReportsComponent } from './Menu/reports/reports.component';
 
 import { AuthLoginService } from './services/auth-login.service';
 import { DoctorCargosComponent } from './menu/doctor-cargos/doctor-cargos.component';
+import { RegisterPacienteComponent } from './register-paciente/register-paciente.component';
 
 const routes: Routes = [
  {path:'',component:LoginComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
  {path:'Home',component:HomeComponent,canActivate:[AuthLoginService]},
  {path:'Register',component:RegisterUserComponent },
  {path:'Report',component:ReportsComponent ,canActivate:[AuthLoginService]},
- {path: 'Cargo', component : DoctorCargosComponent, canActivate:[AuthLoginService]}
+ {path: 'Cargo', component : DoctorCargosComponent, canActivate:[AuthLoginService]},
+ {path: 'Register-Paciente', component: RegisterPacienteComponent}
 ];
 
 @NgModule({

@@ -42,6 +42,6 @@ export class LoginComponent implements OnInit {
 
   public registrarUsuario()
   {
-     this.router.navigate(['/Register']);
+     this.router.navigate(['/Register-Paciente']);
   }
 }

@@ -33,10 +33,7 @@ export class RegisterUserComponent implements OnInit {
 
   public addUser=function(event)
   {
-   
-
-
-    var user = new User();
+   var user = new User();
     user = <User>this.myForm.value;
     user.Rol="Doctor";  
 

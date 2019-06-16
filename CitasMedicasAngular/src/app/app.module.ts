@@ -26,6 +26,7 @@ import { DeleteAccountComponent } from './Menu/User/delete-account/delete-accoun
 import { LocalStorageService } from './Services/local-storage.service';
 import { DoctorCargosComponent } from './menu/doctor-cargos/doctor-cargos.component';
 import { DoctorCargosService } from './services/doctor-cargos.service';
+import { RegisterPacienteComponent } from './register-paciente/register-paciente.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { DoctorCargosService } from './services/doctor-cargos.service';
     ReportsComponent,
     DeleteAccountComponent,
     DoctorCargosComponent,
+    RegisterPacienteComponent,
   ],
   imports: [
     BrowserModule,
