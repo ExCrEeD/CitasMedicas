@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace debatesWebApi
+namespace CitasMedicasWebApi
 {
     public class BundleConfig
     {

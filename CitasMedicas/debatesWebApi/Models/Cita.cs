@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace debatesWebApi.Models
+namespace CitasMedicasWebApi.Models
 {
     public class Cita
     {

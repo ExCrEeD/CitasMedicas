@@ -1,8 +1,7 @@
-namespace debatesWebApi.Migrations
+namespace CitasMedicasWebApi.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class updaeuser : DbMigration
     {
         public override void Up()

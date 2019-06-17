@@ -226,10 +226,9 @@ C:\Users\daniel.melo\Documents\Universidad\citasmedicas\CitasMedicas\CitasMedica
 C:\Users\daniel.melo\Documents\Universidad\citasmedicas\CitasMedicas\CitasMedicas\debatesWebApi\bin\ru\System.Spatial.resources.dll
 C:\Users\daniel.melo\Documents\Universidad\citasmedicas\CitasMedicas\CitasMedicas\debatesWebApi\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\daniel.melo\Documents\Universidad\citasmedicas\CitasMedicas\CitasMedicas\debatesWebApi\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\daniel.melo\Documents\Universidad\citasmedicas\CitasMedicas\CitasMedicas\debatesWebApi\obj\Debug\CitasMedicasWebApi.csprojAssemblyReference.cache
-C:\Users\daniel.melo\Documents\Universidad\citasmedicas\CitasMedicas\CitasMedicas\debatesWebApi\obj\Debug\debatesWebApi.Migrations.updaeuser.resources
 C:\Users\daniel.melo\Documents\Universidad\citasmedicas\CitasMedicas\CitasMedicas\debatesWebApi\obj\Debug\CitasMedicasWebApi.csproj.GenerateResource.cache
 C:\Users\daniel.melo\Documents\Universidad\citasmedicas\CitasMedicas\CitasMedicas\debatesWebApi\obj\Debug\CitasMedicasWebApi.csproj.CoreCompileInputs.cache
 C:\Users\daniel.melo\Documents\Universidad\citasmedicas\CitasMedicas\CitasMedicas\debatesWebApi\obj\Debug\CitasMedicasWebApi.csproj.CopyComplete
 C:\Users\daniel.melo\Documents\Universidad\citasmedicas\CitasMedicas\CitasMedicas\debatesWebApi\obj\Debug\debatesWebApi.dll
 C:\Users\daniel.melo\Documents\Universidad\citasmedicas\CitasMedicas\CitasMedicas\debatesWebApi\obj\Debug\debatesWebApi.pdb
+C:\Users\daniel.melo\Documents\Universidad\citasmedicas\CitasMedicas\CitasMedicas\debatesWebApi\obj\Debug\CitasMedicasWebApi.Migrations.updaeuser.resources

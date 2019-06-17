@@ -1,13 +1,11 @@
-﻿using debatesWebApi.Context;
-using debatesWebApi.Models;
+﻿using CitasMedicasWebApi.Context;
+using CitasMedicasWebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
-namespace debatesWebApi.Controllers
+namespace CitasMedicasWebApi.Controllers
 {
     public class CitaController : ApiController
     {

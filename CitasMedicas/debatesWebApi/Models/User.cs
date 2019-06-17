@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace debatesWebApi.Models
+namespace CitasMedicasWebApi.Models
 {
     public class User
     {

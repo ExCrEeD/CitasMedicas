@@ -1,18 +1,15 @@
-namespace debatesWebApi.Migrations
+namespace CitasMedicasWebApi.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<debatesWebApi.Context.DataStore>
+    internal sealed class Configuration : DbMigrationsConfiguration<CitasMedicasWebApi.Context.DataStore>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(debatesWebApi.Context.DataStore context)
+        protected override void Seed(CitasMedicasWebApi.Context.DataStore context)
         {
             //  This method will be called after migrating to the latest version.
 
