@@ -23,11 +23,11 @@
                   <div class="error" *ngIf="myForm.get('Password').hasError('required') && myForm.get('Password').touched">No se ha ingresado una contraseña</div>
                   
                   
-                  <label for="Cargo"><b>Cargo</b></label>
+                  <label for="Cargo"><b>Area de especializacion</b></label>
                   <select name="Cargo" formControlName="Cargo" class="form-control"  >
                     <option  [ngValue]="cargo.IdCargo" *ngFor="let cargo of allcargos$  | async"> {{cargo.Descripcion}}</option>
                   </select>             
-                  <div class="error" *ngIf="myForm.get('Cargo').hasError('required') && myForm.get('Cargo').touched">No se ha ingresado un rol</div>
+                  <div class="error" *ngIf="myForm.get('Cargo').hasError('required') && myForm.get('Cargo').touched">No se ha ingresado un Area</div>
                   
 
                   <button type="submit"  [disabled]="myForm.invalid"class="btn btn-success"(click)="addUser($event)">Registrarse</button>

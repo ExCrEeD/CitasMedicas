@@ -13,11 +13,26 @@
         <div class="text-center">
           <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center" (click)="navigateComponent('Cargo');">
             <span class="text-center mr-3"><i class="fas fa-user-cog fa-2x"></i></span>
-            <span class="text-center mb-0">Crear Cargo</span>
+            <span class="text-center mb-0">Crear Area de Medicina</span>
           </button>
         </div>
       </div>
-     
+      <div *ngIf="menu.AgendarCita">
+        <div class="text-center">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center" (click)="navigateComponent('AgendarCita');">
+            <span class="text-center mr-3"><i class="fas fa-user-cog fa-2x"></i></span>
+            <span class="text-center mb-0">Agendar Cita</span>
+          </button>
+        </div>
+      </div> 
+      <div *ngIf="menu.ConsultarCita">
+        <div class="text-center">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center" (click)="navigateComponent('ConsultarCita);">
+            <span class="text-center mr-3"><i class="fas fa-user-cog fa-2x"></i></span>
+            <span class="text-center mb-0">Consultar Cita</span>
+          </button>
+        </div>
+      </div>    
       <div *ngIf="menu.Report">
         <div class="text-center">
           <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center" (click)="navigateComponent('Report');">
@@ -34,11 +49,11 @@
           </button>
         </div>
       </div>
-      <div *ngIf="showUserOption">
+      <div *ngIf="menu.DeleteAccount">
         <div class="text-center">
           <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center" (click)="navigateComponent('DeleteAccount')">
             <span class="text-center mr-3"><i class="fas fa-user-minus fa-2x"></i></span>
-            <span class="text-center mb-0">Borrar usuario</span>
+            <span class="text-center mb-0">Eliminar Cuenta</span>
           </button>
         </div>
       </div>
@@ -72,6 +87,22 @@
             </button>
           </div>
         </div>
+        <div *ngIf="menu.AgendarCita">
+          <div class="text-center">
+            <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center" (click)="navigateComponent('AgendarCita');">
+              <span class="text-center mr-3"><i class="fas fa-user-cog fa-2x"></i></span>
+              <span class="text-center mb-0">Agendar Cita</span>
+            </button>
+          </div>
+        </div> 
+        <div *ngIf="menu.ConsultarCita">
+          <div class="text-center">
+            <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center" (click)="navigateComponent('ConsultarCita);">
+              <span class="text-center mr-3"><i class="fas fa-user-cog fa-2x"></i></span>
+              <span class="text-center mb-0">Consultar Cita</span>
+            </button>
+          </div>
+        </div>   
       <div *ngIf="menu.Report">
         <div class="text-center">
           <button class="uk-button px-4 py-3 btn-block btn-d-menu" (click)="navigateComponent('Report');">
@@ -88,11 +119,11 @@
           </button>
         </div>
       </div>
-      <div *ngIf="showUserOption">
+      <div *ngIf="menu.DeleteAccount">
         <div class="text-center">
           <button class="uk-button px-4 py-3 btn-block btn-d-menu" (click)="navigateComponent('DeleteAccount')">
             <p class="text-center"><i class="fas fa-user-minus fa-2x"></i></p>
-            <p class="text-center mb-0">Borrar usuario</p>
+            <p class="text-center mb-0">Eliminar Cuenta</p>
           </button>
         </div>
       </div>
@@ -122,6 +153,8 @@
         <app-reports *ngIf=showReportComponent></app-reports>
         <app-delete-account *ngIf=showDeleteAccount></app-delete-account>
         <app-register-user *ngIf=showRegisterUser></app-register-user>
+        <app-agendar-citas *ngIf=showAgendarCita></app-agendar-citas>
+        <app-consultar-citas *ngIf =showConsultarCita></app-consultar-citas>
       </div>
     </div>
   </div>

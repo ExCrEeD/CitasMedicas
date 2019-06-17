@@ -6,6 +6,6 @@ export class User
     Email :String ;
     Password :String;
     Rol : String; 
-    Cargo : String;
+    Cargo : number;
 }
 

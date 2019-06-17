@@ -36,7 +36,7 @@ export class RegisterUserComponent implements OnInit {
    var user = new User();
     user = <User>this.myForm.value;
     user.Rol="Doctor";  
-
+    user.Cargo = 
     this.usrregister.add(user).subscribe();
     alert("usuario registrado correctamente");
     this.myForm.reset();

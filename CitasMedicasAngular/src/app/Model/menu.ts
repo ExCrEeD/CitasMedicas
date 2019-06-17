@@ -2,7 +2,7 @@ export class Menu
 {
     Id:number;
     Rol:string;
-    AgendarCitas:boolean;
+    AgendarCita:boolean;
     Report:boolean;
     ConsultarCita:boolean;
     UserInfo:boolean;

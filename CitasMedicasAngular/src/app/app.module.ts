@@ -27,6 +27,8 @@ import { LocalStorageService } from './Services/local-storage.service';
 import { DoctorCargosComponent } from './menu/doctor-cargos/doctor-cargos.component';
 import { DoctorCargosService } from './services/doctor-cargos.service';
 import { RegisterPacienteComponent } from './register-paciente/register-paciente.component';
+import { AgendarCitasComponent } from './Menu/agendar-citas/agendar-citas.component';
+import { ConsultarCitasComponent } from './Menu/consultar-citas/consultar-citas.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { RegisterPacienteComponent } from './register-paciente/register-paciente
     DeleteAccountComponent,
     DoctorCargosComponent,
     RegisterPacienteComponent,
+    AgendarCitasComponent,
+    ConsultarCitasComponent,
   ],
   imports: [
     BrowserModule,

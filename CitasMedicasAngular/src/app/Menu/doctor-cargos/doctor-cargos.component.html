@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row justify-content-center align-items-center minh-100">
     <div class="col-md-5">
-          <h4 align="center">Crear un nuevo Cargo</h4>  
+          <h4 align="center">Crear Area de Medicina</h4>  
           <form  [formGroup]="myForm" novalidate autocomplete="off">
                <div class="container">
 
-                <label for="Name"><b>Nombre Cargo</b></label>
+                <label for="Name"><b>Nombre Area</b></label>
                 <input type="text"  name="Name" formControlName="Descripcion" >
                 <div class="error" *ngIf="myForm.get('Descripcion').hasError('required') && myForm.get('Descripcion').touched">Nombre Cargo requerido</div>
                

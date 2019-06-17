@@ -56,7 +56,7 @@ namespace debatesWebApi.Controllers
             {
                 User user = new User();
                 user.Name = "Admin";
-                user.Email = "admin@debate";
+                user.Email = "admin@citas";
                 user.Password = "Admin123*";
                 user.Rol = "Admin";
                 db.Users.Add(user);
@@ -91,9 +91,19 @@ namespace debatesWebApi.Controllers
         }
 
         //// DELETE api/user
-        //public Response Delete(int id,string password)
-        //{
-          
-        //}
+        public Response Delete(int id, string password)
+        {
+            string mensaje = "";
+            var usr = db.Users.Find(id);
+            if (usr.Password == password)
+                mensaje = "usuario borrado correctamente";
+            else
+                mensaje = "Contraseña incorrecta";
+
+            return new Response
+            {
+                Message = mensaje
+            };
+        }
     }
 }

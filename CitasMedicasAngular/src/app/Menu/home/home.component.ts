@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   public showDeleteAccount = false;
   public showRegisterUser = false;
   public showCrearCargo = false;
+  public showAgendarCita = false;
+  public showConsultarCita = false;
   public user = "";
   constructor(private userService:UserService,private router: Router,private menu:Menu) {
      this.user = userService.getUserName(); 
@@ -33,6 +35,8 @@ export class HomeComponent implements OnInit {
     this.showDeleteAccount = false;
     this.showRegisterUser = false;
     this.showCrearCargo = false;
+    this.showAgendarCita = false;
+    this.showConsultarCita=false;
 
     switch(componente)
     {

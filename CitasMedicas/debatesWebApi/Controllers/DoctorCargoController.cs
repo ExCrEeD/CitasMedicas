@@ -30,7 +30,8 @@ namespace debatesWebApi.Controllers
 
         }
 
-        public void deleteCargo(int id )
+
+        public void deleteCargo(int id)
         {
             var query = db.DoctorCargos.Find(id);
             db.DoctorCargos.Remove(query);
