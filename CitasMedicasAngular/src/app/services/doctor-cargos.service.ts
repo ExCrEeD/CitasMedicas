@@ -13,9 +13,8 @@ export class DoctorCargosService {
   private headers: HttpHeaders;
   private accessPointUrl: string = 'http://localhost:61568/api/doctorCargo';
   /* static instance:UserRegisterService; */
-  private loginState = false;
 
-  constructor(private http: HttpClient,private currentUser:User,private userRol:Menu, @Inject(SESSION_STORAGE) private storage: WebStorageService) 
+  constructor(private http: HttpClient,private currentUser:User,private userRol:Menu) 
   { 
    /*  UserRegisterService.instance = this; */
     this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
