@@ -199,10 +199,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906130255398_updae-user.cs" />
-    <Compile Include="Migrations\201906130255398_updae-user.Designer.cs">
-      <DependentUpon>201906130255398_updae-user.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Cita.cs" />
     <Compile Include="Models\DoctorCargos.cs" />
@@ -339,11 +335,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906130255398_updae-user.resx">
-      <DependentUpon>201906130255398_updae-user.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

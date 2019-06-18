@@ -5,31 +5,33 @@
           <form  [formGroup]="myForm" novalidate autocomplete="off">
                <div class="container">
                 
-                <label for="Cargo"><b>Seleccione Area</b></label>
-                <select name="Cargo" formControlName="Cargo" class="form-control"  >
+                <label for="Area"><b>Seleccione Area</b></label>
+                <select name="Area" formControlName="Area" class="form-control"  >
                   <option  [ngValue]="cargo.IdCargo" *ngFor="let cargo of allcargos$  | async"> {{cargo.Descripcion}}</option>
                 </select>             
-                <div class="error" *ngIf="myForm.get('Cargo').hasError('required') && myForm.get('Cargo').touched">No se ha ingresado un Area</div>
+                <div class="error" *ngIf="myForm.get('Area').hasError('required') && myForm.get('Area').touched">No se ha ingresado un Area</div>
                 
 
-                <label for="Cargo"><b>Seleccione Doctor</b></label>
-                <select name="Cargo" formControlName="Cargo" class="form-control"  >
+                <label for="IdDoctor"><b>Seleccione Doctor</b></label>
+                <select name="IdDoctor" formControlName="IdDoctor" class="form-control" disabled = "doctorDisabled">
                   <option  [ngValue]="cargo.IdCargo" *ngFor="let cargo of allcargos$  | async"> {{cargo.Descripcion}}</option>
                 </select>             
-                <div class="error" *ngIf="myForm.get('Cargo').hasError('required') && myForm.get('Cargo').touched">No se ha ingresado un Area</div>
+                <div class="error" *ngIf="myForm.get('IdDoctor').hasError('required') && myForm.get('IdDoctor').touched">No se ha seleccionado un Doctor</div>
 
-                <label for="Cargo"><b>Seleccione Fecha</b></label>
-                <select name="Cargo" formControlName="Cargo" class="form-control"  >
+                <label for="Fecha"><b>Seleccione Fecha</b></label>
+                <select name="Fecha" formControlName="Fecha" class="form-control" disabled = "fechaDisabled" >
                   <option  [ngValue]="cargo.IdCargo" *ngFor="let cargo of allcargos$  | async"> {{cargo.Descripcion}}</option>
                 </select>             
-                <div class="error" *ngIf="myForm.get('Cargo').hasError('required') && myForm.get('Cargo').touched">No se ha ingresado un Area</div>
+                <div class="error" *ngIf="myForm.get('Fecha').hasError('required') && myForm.get('Fecha').touched">No se ha seleccionado una fecha</div>
 
-                <label for="Cargo"><b>Seleccione Hora disponible</b></label>
-                <select name="Cargo" formControlName="Cargo" class="form-control"  >
+                <label for="Hora"><b>Seleccione Hora disponible</b></label>
+                <select name="Hora" formControlName="Cargo" class="form-control" disabled = "horaDisabled"  >
                   <option  [ngValue]="cargo.IdCargo" *ngFor="let cargo of allcargos$  | async"> {{cargo.Descripcion}}</option>
                 </select>             
-                <div class="error" *ngIf="myForm.get('Cargo').hasError('required') && myForm.get('Cargo').touched">No se ha ingresado un Area</div>
-
+                <div class="error" *ngIf="myForm.get('Hora').hasError('required') && myForm.get('Hora').touched">No se ha seleccionado una Hora</div>
+                <br>
+                <label for="Precio"><b>Precio $</b></label>
+                <br>
                 <button type="submit"  [disabled]="myForm.invalid"class="btn btn-success"(click)="addCita($event)">Agendar Cita</button>
               </div>       
           </form>

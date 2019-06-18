@@ -42,5 +42,12 @@ namespace CitasMedicasWebApi.Models
                 this.DeleteAccount = true;
             }
         }
+        /// <summary>
+        ///  constructor vacio obligatorio para instancias de este objeto
+        /// </summary>
+        public MenuRoles()
+        {
+
+        }
     }
 }

@@ -12,12 +12,10 @@ import { element } from '@angular/core/src/render3';
   styleUrls: ['./doctor-cargos.component.css']
 })
 export class DoctorCargosComponent implements OnInit {
-  alldoctores$:Observable<User>;
   arrayDoctorCargo$:Observable<DoctorCargo>;
   public myForm:FormGroup;
 
   constructor(private formBuilder:FormBuilder, private doctorCargoService:DoctorCargosService) { 
-    this.getDoctores();
   }
   
   ngOnInit() {
@@ -25,12 +23,12 @@ export class DoctorCargosComponent implements OnInit {
       Descripcion:['',Validators.required],
       ValorHora:['',Validators.required]
     });
-    this.list();
+    this.getCargos();
   }
 
-  async list() 
+  async getCargos() 
   { 
-    this.arrayDoctorCargo$ = this.doctorCargoService.getAllCargos();
+    this.arrayDoctorCargo$ = await this.doctorCargoService.getAllCargos();
     //this.arrayDoctorCargo$.forEach(element=>{console.log(element)}) ;   
   }
 
@@ -39,20 +37,13 @@ export class DoctorCargosComponent implements OnInit {
     this.doctorCargoService.add(this.myForm.value).subscribe();
     alert("Cargo registrado correctamente");
     this.myForm.reset();
-    this.list();
+    this.getCargos();
   }
 
-  async getDoctores()
-  { 
-    this.alldoctores$ =  this.doctorCargoService.getDoctores();
-  /*   this.alldoctores$.forEach(element => {
-      console.log(element);
-  });  */    
-  }
 
   async DeleteCargo(idCargo: number) {
     await this.doctorCargoService.DeleteCargo(idCargo).toPromise();  
     alert("Cargo Eliminado");
-    this.list();
+    this.getCargos();
   }
 } 

@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
   constructor(private userService:UserService,private router: Router,private menu:Menu) {
      this.user = userService.getUserName(); 
      this.menu = userService.getMenu();
-     console.log(this.menu);
    }
 
   ngOnInit() { 
@@ -45,7 +44,8 @@ export class HomeComponent implements OnInit {
         case 'DeleteAccount':{this.showDeleteAccount=true;break;}
         case 'RegisterUser':{this.showRegisterUser=true;}break;
         case 'Cargo':{this.showCrearCargo =true}break;
-
+        case 'AgendarCita':{this.showAgendarCita = true}break;
+        case 'ConsultarCita':{this.showConsultarCita=true}break;
     }
   };
 
