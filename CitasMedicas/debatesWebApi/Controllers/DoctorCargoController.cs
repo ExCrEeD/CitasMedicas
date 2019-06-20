@@ -27,6 +27,7 @@ namespace CitasMedicasWebApi.Controllers
 
         }
 
+        
 
         public void deleteCargo(int id)
         {

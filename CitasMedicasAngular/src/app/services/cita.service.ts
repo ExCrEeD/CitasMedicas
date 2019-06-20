@@ -21,8 +21,13 @@ export class CitaService {
 
   public geHorasDisponiblesDoctor(idDoctor,fecha)
   {
-    return this.http.get<User>(this.accessPointUrl+
-      "/getDoctoresPorIdCargo?idDoctor="+idDoctor+
+    return this.http.get<number>(this.accessPointUrl+
+      "/getHorasDisponiblesDoctor?idDoctor="+idDoctor+
       "&fecha="+fecha,{headers: this.headers});
   }
+
+  public add(user) {
+    return this.http.post(this.accessPointUrl,user, {headers: this.headers});
+  }
+  
 }

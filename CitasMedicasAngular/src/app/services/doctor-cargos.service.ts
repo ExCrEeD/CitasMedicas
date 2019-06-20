@@ -26,7 +26,7 @@ export class DoctorCargosService {
   }
 
   public getDoctores(){
-    return this.http.get<User>(this.accessPointUrl+"/getDoctores",{headers: this.headers});    
+    return this.http.get<User>(this.accessPointUrl+"/GetDoctores",{headers: this.headers});    
   }
 
   public getAllCargos(){

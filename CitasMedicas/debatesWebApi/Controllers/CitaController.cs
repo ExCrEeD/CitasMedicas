@@ -4,9 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace CitasMedicasWebApi.Controllers
 {
+
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CitaController : ApiController
     {
         DataStore db = new DataStore();
@@ -19,7 +22,7 @@ namespace CitasMedicasWebApi.Controllers
             return query.ToList();
         }
 
-        public IEnumerable<int> geHorasDisponiblesDoctor(int idDoctor, DateTime fecha)
+        public IEnumerable<int> getHorasDisponiblesDoctor(int idDoctor, DateTime fecha)
         {
             var query = from cita in db.cita
                         where cita.IdDoctor == idDoctor && cita.Fecha.Equals(fecha)

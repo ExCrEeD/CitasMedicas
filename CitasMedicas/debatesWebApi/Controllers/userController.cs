@@ -1,5 +1,6 @@
 ﻿using CitasMedicasWebApi.Context;
 using CitasMedicasWebApi.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -33,7 +34,7 @@ namespace CitasMedicasWebApi.Controllers
             return user;
         }
 
-        public MenuRoles getRolMenu(string rol)
+         public MenuRoles getRolMenu(string rol)
         {
             var query = from a in db.MenuRoles
                         where a.Rol.ToUpper() == rol.ToUpper()

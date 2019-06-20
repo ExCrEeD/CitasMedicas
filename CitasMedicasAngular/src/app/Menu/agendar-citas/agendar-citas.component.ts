@@ -3,6 +3,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/Services/user.service';
 import { DoctorCargosService } from 'src/app/services/doctor-cargos.service';
 import { DISABLED } from '@angular/forms/src/model';
+import { Observable } from 'rxjs';
+import { DoctorCargo } from 'src/app/Model/doctor-cargo';
+import { User } from 'src/app/Model/user';
+import { CitaService } from 'src/app/services/cita.service';
+import { Cita } from 'src/app/Model/cita';
 
 @Component({
   selector: 'app-agendar-citas',
@@ -15,17 +20,56 @@ export class AgendarCitasComponent implements OnInit {
   public fechaDisabled = true;
   public horaDisabled = true;
   public myForm:FormGroup;
-  
+  arrayDoctorCargo$:Observable<DoctorCargo>;
+  arrayDoctores$:Observable<User>;
+  arrayHorasDisponibles$:Observable<number>;
+
   constructor(private formBuilder:FormBuilder,private usrregister:UserService, 
-        private doctorCargoService:DoctorCargosService) { }
+        private doctorCargoService:DoctorCargosService, private citaServ: CitaService) {
+          
+         }
         
   ngOnInit() {
     this.myForm = this.formBuilder.group({
       Area:['',Validators.required],
-      IdDoctor:['',Validators.required],
-      Fecha:['',Validators.required],
-      Hora:['',Validators.required]
+      IdDoctor:[{value: '', disabled: true},Validators.required],
+      Fecha:[{value: '', disabled: true},Validators.required],
+      Hora:[{value: '', disabled: true},Validators.required]
     });
+
+    this.getCargos();
   }
 
+
+  async getCargos() 
+  { 
+    this.arrayDoctorCargo$ = await this.doctorCargoService.getAllCargos();
+  }
+
+  async clickAreas(){
+    this.myForm.controls["IdDoctor"].enable();
+    var cita = new Cita();
+    cita = <Cita>this.myForm.value;       
+    
+   if (cita.Area!= undefined){ 
+     this.arrayDoctores$ = await this.citaServ.getDoctoresPorIdCargo(cita.Area)
+    }  
+     
+  }
+
+  public clickDoctor(){
+    this.myForm.controls["Fecha"].enable();
+  }
+
+  async  clickFecha(){
+    this.myForm.controls["Hora"].enable();
+    var cita = new Cita();
+     cita = <Cita> this.myForm.value;
+      console.log(cita);      
+        this.arrayHorasDisponibles$ = await this.citaServ.geHorasDisponiblesDoctor(cita.IdDoctor,cita.Fecha);
+     
+  }
+
+
+  
 }

@@ -88,4 +88,6 @@ export class UserService {
   {
     return this.storage.get('local_storage_menu') || this.userRol;
   }
-}
+
+  
+} 
