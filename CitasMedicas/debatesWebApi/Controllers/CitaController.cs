@@ -14,6 +14,22 @@ namespace CitasMedicasWebApi.Controllers
     {
         DataStore db = new DataStore();
 
+        public IEnumerable<Cita> getCitaDoctor(int idDoctor)
+        {
+            var query = from cita in db.cita
+                        where cita.IdDoctor == idDoctor && !cita.CitaFinalizada
+                        select cita;
+            return query.ToList();
+        }
+
+        public IEnumerable<Cita> getCitaPaciente(int idPaciente)
+        {
+            var query = from cita in db.cita
+                        where cita.IdPaciente == idPaciente && !cita.CitaFinalizada
+                        select cita;
+            return query.ToList();
+        }
+
         public IEnumerable<User> getDoctoresPorIdCargo(int idCargo)
         {
             var query = from user in db.Users
@@ -28,12 +44,19 @@ namespace CitasMedicasWebApi.Controllers
                         where cita.IdDoctor == idDoctor && cita.Fecha.Equals(fecha)
                         select cita;
             List<int> listhoras = query.Select(s => s.Hora).ToList();
+            List<int> horasDisponibles = new List<int>();
             for (int hora = 6; hora < 23; hora++)
             {
                 if (!listhoras.Contains(hora))
-                    listhoras.Add(hora);
+                    horasDisponibles.Add(hora);
             }
-            return listhoras.OrderBy(w => w);
+            return horasDisponibles.OrderBy(w => w);
+        }
+
+        public void Post([FromBody]Cita cita)
+        {
+            db.cita.Add(cita);
+            db.SaveChanges();
         }
     }
 }
