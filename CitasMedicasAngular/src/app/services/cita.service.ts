@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { User } from '../Model/user';
+import { DTOCita } from '../Model/dtocita';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,24 @@ export class CitaService {
       "&fecha="+fecha,{headers: this.headers});
   }
 
-  public add(user) {
-    return this.http.post(this.accessPointUrl,user, {headers: this.headers});
+  public getDoctorCitas(idDoctor)
+  {
+    return this.http.get<DTOCita>(this.accessPointUrl+
+      "/getCitaDoctor?idDoctor="+idDoctor,{headers: this.headers});
+  }
+  public getPacienteCitas(idPaciente)
+  {
+    return this.http.get<DTOCita>(this.accessPointUrl+
+      "/getCitaPaciente?idPaciente="+idPaciente,{headers: this.headers});
+  }
+
+  public add(cita) {
+    return this.http.post(this.accessPointUrl,cita, {headers: this.headers});
+  }
+  
+  public citaFinalizada(idCita)
+  {
+    return this.http.get(this.accessPointUrl+"/getFinalizada?idCita="+idCita,{headers: this.headers})
   }
   
 }

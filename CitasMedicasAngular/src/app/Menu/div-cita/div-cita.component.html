@@ -1,0 +1,19 @@
+<div class="card bg-transparent mb-3" style="max-width: 32rem;">
+  <div class="card-header bg-transparent">
+    <div class="box-header with-border">
+      <div class="user-block">
+        <div>Cita de: {{ cita.Area }}</div> 
+        <div class="username" *ngIf="!EsDoctor">Doctor {{ cita.NombreDoctor }}</div>  
+        <div class="username"*ngIf="EsDoctor"> Paciente: {{ cita.NombrePaciente }}</div>
+        
+        <div class="username">Fecha: {{ cita.Fecha }}</div>
+        
+        <div class="username">Hora: {{ cita.Hora }}</div>
+        
+        <div class="username" *ngIf="!EsDoctor">Precio: {{ cita.ValorCita }}</div>
+        
+        <button type="button" *ngIf="EsDoctor" (click)="CitaFinalizada()">Marcar cita como Finalizada</button> 
+      </div>
+    </div>
+  </div>
+</div>

@@ -47,29 +47,39 @@ export class AgendarCitasComponent implements OnInit {
   }
 
   async clickAreas(){
+    console.log("asd");
     this.myForm.controls["IdDoctor"].enable();
     var cita = new Cita();
-    cita = <Cita>this.myForm.value;       
-    
+    cita = <Cita>this.myForm.value;         
    if (cita.Area!= undefined){ 
      this.arrayDoctores$ = await this.citaServ.getDoctoresPorIdCargo(cita.Area)
     }  
-     
-  }
+ }
 
   public clickDoctor(){
     this.myForm.controls["Fecha"].enable();
   }
 
-  async  clickFecha(){
+  public clickFecha()
+  {
     this.myForm.controls["Hora"].enable();
+  }
+  
+  
+  async  focusout(){ 
     var cita = new Cita();
      cita = <Cita> this.myForm.value;
-      console.log(cita);      
-        this.arrayHorasDisponibles$ = await this.citaServ.geHorasDisponiblesDoctor(cita.IdDoctor,cita.Fecha);
-     
+        this.arrayHorasDisponibles$ = await this.citaServ.geHorasDisponiblesDoctor(cita.IdDoctor,cita.Fecha);   
   }
 
-
+  async addCita()
+  {
+    var cita = new Cita();
+    cita = <Cita> this.myForm.value;
+    cita.IdPaciente = this.usrregister.getUserId();
+    await this.citaServ.add(cita).subscribe();
+    alert("Cita agendada correctamente");
+     this.myForm.reset();
+  }
   
 }

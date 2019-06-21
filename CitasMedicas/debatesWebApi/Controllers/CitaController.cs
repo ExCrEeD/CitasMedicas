@@ -1,5 +1,6 @@
 ﻿using CitasMedicasWebApi.Context;
 using CitasMedicasWebApi.Models;
+using debatesWebApi.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,19 +15,49 @@ namespace CitasMedicasWebApi.Controllers
     {
         DataStore db = new DataStore();
 
-        public IEnumerable<Cita> getCitaDoctor(int idDoctor)
+        public IEnumerable<DTOCita> getCitaDoctor(int idDoctor)
         {
             var query = from cita in db.cita
                         where cita.IdDoctor == idDoctor && !cita.CitaFinalizada
-                        select cita;
+                        select new DTOCita
+                        {
+                            IdCita = cita.Id,
+                            Area = (from user in db.Users
+                                    where user.Id == cita.IdDoctor
+                                    join cargo in db.DoctorCargos on user.Cargo equals cargo.IdCargo
+                                    select cargo).FirstOrDefault().Descripcion,
+                            NombreDoctor = (from user in db.Users where user.Id == cita.IdDoctor select user).FirstOrDefault().Name,
+                            NombrePaciente = (from user in db.Users where user.Id == cita.IdPaciente select user).FirstOrDefault().Name,
+                            Fecha = cita.Fecha,
+                            Hora = cita.Hora,
+                            ValorCita = (from user in db.Users
+                                         where user.Id == cita.IdDoctor
+                                         join cargo in db.DoctorCargos on user.Cargo equals cargo.IdCargo
+                                         select cargo).FirstOrDefault().ValorHora
+                        };
             return query.ToList();
         }
 
-        public IEnumerable<Cita> getCitaPaciente(int idPaciente)
+        public IEnumerable<DTOCita> getCitaPaciente(int idPaciente)
         {
             var query = from cita in db.cita
                         where cita.IdPaciente == idPaciente && !cita.CitaFinalizada
-                        select cita;
+                        select new DTOCita
+                        {
+                            IdCita = cita.Id,
+                            Area = (from user in db.Users
+                                    where user.Id == cita.IdDoctor
+                                    join cargo in db.DoctorCargos on user.Cargo equals cargo.IdCargo
+                                    select cargo).FirstOrDefault().Descripcion,
+                            NombreDoctor = (from user in db.Users where user.Id == cita.IdDoctor select user).FirstOrDefault().Name,
+                            NombrePaciente = (from user in db.Users where user.Id == cita.IdPaciente select user).FirstOrDefault().Name,
+                            Fecha = cita.Fecha,
+                            Hora = cita.Hora,
+                            ValorCita = (from user in db.Users
+                                         where user.Id == cita.IdDoctor
+                                         join cargo in db.DoctorCargos on user.Cargo equals cargo.IdCargo
+                                         select cargo).FirstOrDefault().ValorHora
+                        };
             return query.ToList();
         }
 
@@ -56,6 +87,15 @@ namespace CitasMedicasWebApi.Controllers
         public void Post([FromBody]Cita cita)
         {
             db.cita.Add(cita);
+            db.SaveChanges();
+        }
+
+        public void getFinalizada(int idCita)
+        {
+            var cita = db.cita.Find(idCita);
+            var cita2 = cita;
+            cita2.CitaFinalizada = true;
+            db.Entry(cita).CurrentValues.SetValues(cita2);
             db.SaveChanges();
         }
     }

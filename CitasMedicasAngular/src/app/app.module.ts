@@ -24,11 +24,13 @@ import {Response} from './Model/response';
 import {Menu} from './Model/menu';
 import {DoctorCargo} from './model/doctor-cargo';
 import {Cita} from './Model/cita';
+import {DTOCita} from './Model/dtocita';
 /* Servicios */
 import { UserService } from './Services/user.service';
 import { LocalStorageService } from './Services/local-storage.service';
 import { DoctorCargosService } from './services/doctor-cargos.service';
 import {CitaService} from './services/cita.service';
+import { DivCitaComponent } from './menu/div-cita/div-cita.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import {CitaService} from './services/cita.service';
     RegisterPacienteComponent,
     AgendarCitasComponent,
     ConsultarCitasComponent,
+    DivCitaComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,7 @@ import {CitaService} from './services/cita.service';
     StorageServiceModule,
      
   ],
-  providers: [UserService,User,Response,Menu, DoctorCargosService,CitaService,DoctorCargo,Cita],
+  providers: [UserService,User,Response,Menu, DoctorCargosService,CitaService,DoctorCargo,Cita,DTOCita],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,8 +6,8 @@
         <div class="container">
 
           <label for="Area"><b>Seleccione Area</b></label>
-          <select name="Area" formControlName="Area" class="form-control">
-            <option [ngValue]="cargo.IdCargo" *ngFor="let cargo of arrayDoctorCargo$  | async" (click)="clickAreas()">
+          <select name="Area" formControlName="Area" class="form-control" (click)="clickAreas()">  
+            <option [ngValue]="cargo.IdCargo" *ngFor="let cargo of arrayDoctorCargo$  | async" >
               {{cargo.Descripcion}}
             </option>
           </select>
@@ -16,8 +16,8 @@
 
 
           <label for="IdDoctor"><b>Seleccione Doctor</b></label>
-          <select name="IdDoctor" formControlName="IdDoctor" class="form-control">
-            <option [ngValue]="doctor.Cargo" *ngFor="let doctor of arrayDoctores$  | async" (click)="clickDoctor()">
+          <select name="IdDoctor" formControlName="IdDoctor" class="form-control" (click)="clickDoctor()">
+            <option [ngValue]="doctor.Id" *ngFor="let doctor of arrayDoctores$  | async" >
               {{doctor.Name}}</option>
           </select>
           <div class="error" *ngIf="myForm.get('IdDoctor').hasError('required') && myForm.get('IdDoctor').touched">No se
@@ -26,7 +26,7 @@
           <div class="form-group">
             <label for="Fecha"><b>Fecha</b></label>
             <input type="date" class="form-control" name="Fecha" formControlName="Fecha"
-            (focusout)="clickFecha()">
+            (focusout)="focusout()" (click)="clickFecha()">
             <div class="error red" *ngIf="myForm.get('Fecha').hasError('required') && myForm.get('Fecha').touched">
               No se ha seleccionado una fecha de finalizacion del debate
             </div>
@@ -39,9 +39,9 @@
           <div class="error" *ngIf="myForm.get('Hora').hasError('required') && myForm.get('Hora').touched">No se ha
             seleccionado una Hora</div>
           <br>
-          <label for="Precio"><b>Precio $</b></label>
+          <!-- <label for="Precio"><b>Precio $</b></label> -->
           <br>
-          <button type="submit" [disabled]="myForm.invalid" class="btn btn-success" (click)="addCita($event)">Agendar
+          <button type="submit" [disabled]="myForm.invalid" class="btn btn-success" (click)="addCita()">Agendar
             Cita</button>
         </div>
       </form>
