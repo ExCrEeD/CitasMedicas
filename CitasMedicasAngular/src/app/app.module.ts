@@ -31,6 +31,7 @@ import { LocalStorageService } from './Services/local-storage.service';
 import { DoctorCargosService } from './services/doctor-cargos.service';
 import {CitaService} from './services/cita.service';
 import { DivCitaComponent } from './menu/div-cita/div-cita.component';
+import { ReporteService } from './services/reporte.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { DivCitaComponent } from './menu/div-cita/div-cita.component';
     StorageServiceModule,
      
   ],
-  providers: [UserService,User,Response,Menu, DoctorCargosService,CitaService,DoctorCargo,Cita,DTOCita],
+  providers: [UserService,User,Response,Menu, DoctorCargosService,CitaService,DoctorCargo,Cita,DTOCita, ReporteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

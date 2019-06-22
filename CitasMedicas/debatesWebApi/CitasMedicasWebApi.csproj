@@ -198,6 +198,7 @@
     <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\userController.cs" />
     <Compile Include="DTO\DTOCita.cs" />
+    <Compile Include="DTO\DTOReportCount.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

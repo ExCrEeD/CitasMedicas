@@ -1,5 +1,6 @@
 ﻿using CitasMedicasWebApi.Context;
 using CitasMedicasWebApi.Models;
+using debatesWebApi.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,43 +15,79 @@ namespace debatesWebApi.Controllers
     public class ReporteController : ApiController
     {
         DataStore db = new DataStore();
-        public IEnumerable<User> GetTopDoctores(int idDoctor)
+        public IEnumerable<User> GetTopDoctores()
         {
-            List<int> query = (from cita in db.cita
-                         select cita).GroupBy(g => g.IdDoctor).OrderBy(o => o).Take(3).Select(s=>s.Key).ToList();
-
+            var query = (from cita in db.cita
+                         select cita).ToList();
+            List<DTOReportCount> listresport = new List<DTOReportCount>();
             foreach (var item in query)
+            {
+                DTOReportCount tempItem = new DTOReportCount
+                {
+                    ID = item.IdDoctor,
+                    Conteo = (from cita in db.cita where cita.IdDoctor == item.IdDoctor select cita).Count()
+                };
+                if (!listresport.Contains(tempItem))
+                    listresport.Add(tempItem);
+            }
+            foreach (var item in listresport.OrderBy(o => o.Conteo).Take(3))
             {
                 yield return new User
                 {
-                    Name = (from user in db.Users where user.Id == item select user).FirstOrDefault().Name
+                    Name = (from user in db.Users where user.Id == item.ID select user).FirstOrDefault().Name
                 };
             }
         }
-        public IEnumerable<User> GetTopPacientes(int idDoctor)
-        {
-            List<int> query = (from cita in db.cita
-                               select cita).GroupBy(g => g.IdPaciente).OrderBy(o => o).Take(3).Select(s => s.Key).ToList();
 
+
+
+        public IEnumerable<User> GetTopPacientes()
+        {
+            var query = (from cita in db.cita
+                         select cita).ToList();
+            List<DTOReportCount> listresport = new List<DTOReportCount>();
             foreach (var item in query)
+            {
+                DTOReportCount tempItem = new DTOReportCount
+                {
+                    ID = item.IdPaciente,
+                    Conteo = (from cita in db.cita where cita.IdPaciente == item.IdPaciente select cita).Count()
+                };
+                if (!listresport.Contains(tempItem))
+                    listresport.Add(tempItem);
+            }
+            foreach (var item in listresport.OrderBy(o => o.Conteo).Take(3))
             {
                 yield return new User
                 {
-                    Name = (from user in db.Users where user.Id == item select user).FirstOrDefault().Name
+                    Name = (from user in db.Users where user.Id == item.ID select user).FirstOrDefault().Name
                 };
             }
         }
-        public IEnumerable<DoctorCargos> GetTopCargos(int idDoctor)
+        public IEnumerable<DoctorCargos> GetTopCargos()
         {
-            List<int> query = (from cita in db.cita
-                               select cita).GroupBy(g => g.IdDoctor).OrderBy(o => o).Take(3).Select(s => s.Key).ToList();
-
+            var query = (from cita in db.cita
+                         select cita).ToList();
+            List<DTOReportCount> listresport = new List<DTOReportCount>();
             foreach (var item in query)
             {
-                int idCargo = (from user in db.Users where user.Id == item select user).FirstOrDefault().Cargo;
+                DTOReportCount tempItem = new DTOReportCount
+                {
+                    ID = item.IdDoctor,
+                    Conteo = (from cita in db.cita where cita.IdDoctor == item.IdDoctor select cita).Count()
+                };
+                if (!listresport.Contains(tempItem))
+                    listresport.Add(tempItem);
+            }
+            foreach (var item in listresport.OrderBy(o => o.Conteo).Take(3))
+            {
+                int idCargo = (from usuarios in db.Users where usuarios.Id == item.ID select usuarios).FirstOrDefault().Cargo;
+
                 yield return new DoctorCargos
                 {
-                    Descripcion = (from cargo in db.DoctorCargos where cargo.IdCargo == idCargo select cargo).FirstOrDefault().Descripcion
+                    Descripcion = (from cargos in db.DoctorCargos where cargos.IdCargo == idCargo select cargos).FirstOrDefault().Descripcion,
+                    ValorHora = (from cargos in db.DoctorCargos where cargos.IdCargo == idCargo select cargos).FirstOrDefault().ValorHora
+
                 };
             }
         }

@@ -68,9 +68,8 @@ export class UserService {
 
   public getUserName()
   {
-    return this.storage.get('local_storage_user').Name+" "+ this.storage.get('local_storage_user').SecondName || 
-      this.currentUser.Name+" "+this.currentUser.SecondName
-    
+    return this.storage.get('local_storage_user').Name  
+         
   }
 
   public getUserId()
