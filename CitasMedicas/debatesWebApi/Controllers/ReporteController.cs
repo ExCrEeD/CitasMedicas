@@ -16,21 +16,25 @@ namespace debatesWebApi.Controllers
     {
         DataStore db = new DataStore();
         public IEnumerable<User> GetTopDoctores()
+
         {
             var query = (from cita in db.cita
-                         select cita).ToList();
+                         select cita.IdDoctor).GroupBy(g => g).Select(group => new DTOReportCount { ID = group.FirstOrDefault() }).ToList();
+
             List<DTOReportCount> listresport = new List<DTOReportCount>();
+             
             foreach (var item in query)
+
             {
                 DTOReportCount tempItem = new DTOReportCount
                 {
-                    ID = item.IdDoctor,
-                    Conteo = (from cita in db.cita where cita.IdDoctor == item.IdDoctor select cita).Count()
+                    ID = item.ID,
+                    Conteo = (from cita in db.cita where cita.IdDoctor == item.ID select cita).Count()
                 };
-                if (!listresport.Contains(tempItem))
-                    listresport.Add(tempItem);
+                listresport.Add(tempItem);
             }
-            foreach (var item in listresport.OrderBy(o => o.Conteo).Take(3))
+
+            foreach (var item in listresport.OrderByDescending(o => o.Conteo).Take(5))
             {
                 yield return new User
                 {
@@ -44,19 +48,18 @@ namespace debatesWebApi.Controllers
         public IEnumerable<User> GetTopPacientes()
         {
             var query = (from cita in db.cita
-                         select cita).ToList();
+                         select cita.IdPaciente).GroupBy(g => g).Select(group => new DTOReportCount { ID = group.FirstOrDefault() }).ToList();
             List<DTOReportCount> listresport = new List<DTOReportCount>();
             foreach (var item in query)
             {
                 DTOReportCount tempItem = new DTOReportCount
                 {
-                    ID = item.IdPaciente,
-                    Conteo = (from cita in db.cita where cita.IdPaciente == item.IdPaciente select cita).Count()
+                    ID = item.ID,
+                    Conteo = (from cita in db.cita where cita.IdPaciente == item.ID select cita).Count()
                 };
-                if (!listresport.Contains(tempItem))
-                    listresport.Add(tempItem);
+                listresport.Add(tempItem);
             }
-            foreach (var item in listresport.OrderBy(o => o.Conteo).Take(3))
+            foreach (var item in listresport.OrderByDescending(o => o.Conteo).Distinct().Take(5))
             {
                 yield return new User
                 {
@@ -67,19 +70,19 @@ namespace debatesWebApi.Controllers
         public IEnumerable<DoctorCargos> GetTopCargos()
         {
             var query = (from cita in db.cita
-                         select cita).ToList();
+                         select cita.IdDoctor).GroupBy(g => g).Select(group => new DTOReportCount { ID = group.FirstOrDefault() }).ToList();
             List<DTOReportCount> listresport = new List<DTOReportCount>();
             foreach (var item in query)
             {
                 DTOReportCount tempItem = new DTOReportCount
                 {
-                    ID = item.IdDoctor,
-                    Conteo = (from cita in db.cita where cita.IdDoctor == item.IdDoctor select cita).Count()
+                    ID = item.ID,
+                    Conteo = (from cita in db.cita where cita.IdDoctor == item.ID select cita).Count()
                 };
-                if (!listresport.Contains(tempItem))
+                
                     listresport.Add(tempItem);
             }
-            foreach (var item in listresport.OrderBy(o => o.Conteo).Take(3))
+            foreach (var item in listresport.OrderByDescending(o => o.Conteo).Distinct().Take(5))
             {
                 int idCargo = (from usuarios in db.Users where usuarios.Id == item.ID select usuarios).FirstOrDefault().Cargo;
 
