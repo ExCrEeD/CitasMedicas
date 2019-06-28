@@ -11,9 +11,11 @@ import { DoctorCargosComponent } from './menu/doctor-cargos/doctor-cargos.compon
 import { RegisterPacienteComponent } from './register-paciente/register-paciente.component';
 import {AgendarCitasComponent} from './Menu/agendar-citas/agendar-citas.component';
 import {ConsultarCitasComponent} from './Menu/consultar-citas/consultar-citas.component';
+import { IndexComponent } from './index/index.component';
 
 const routes: Routes = [
- {path:'',component:LoginComponent},
+  
+ {path:'', component:IndexComponent},
  {path:'login',component:LoginComponent},
  /* {path:'Home',component:HomeComponent,canActivate:[AuthLoginService]}, */
  {path:'Home',component:HomeComponent,canActivate:[AuthLoginService]},
